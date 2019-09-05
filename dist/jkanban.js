@@ -264,13 +264,6 @@
             }
             //create node
             var boardNode = document.createElement("div");
-            //Crearing Boton
-            // var boardNodeBoton = document.createElement("span");
-            // boardNodeBoton.dataset.id = board.id;
-            // boardNode.classList.add("bt");
-
-
-            //Crearing Boton
             boardNode.dataset.id = board.id;
             boardNode.dataset.order = self.container.childNodes.length + 1;
             boardNode.classList.add("kanban-board");
@@ -292,15 +285,15 @@
               headerBoard.classList.add(value);
             });
             headerBoard.innerHTML =
-              '<div class="kanban-title-board">' + board.title + "</div> ";
+              '<div class="kanban-title-board">' + board.title + "</div>";
             // if add button is true, add button to the board
             if (addButton) {
-              var btn = document.createElement("button");
+              var btn = document.createElement("BUTTON");
               var t = document.createTextNode(buttonContent);
-
-              btn.setAttribute("class", "kanban-title-button btn btn-default btn-xs");
-              // btn.setAttribute("id", board.id);
-
+              btn.setAttribute(
+                "class",
+                "kanban-title-button btn btn-default btn-xs"
+              );
               btn.appendChild(t);
               //var buttonHtml = '<button class="kanban-title-button btn btn-default btn-xs">'+buttonContent+'</button>'
               headerBoard.appendChild(btn);
