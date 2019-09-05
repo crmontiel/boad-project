@@ -292,7 +292,7 @@
               headerBoard.classList.add(value);
             });
             headerBoard.innerHTML =
-              '<div class="kanban-title-board">' + board.title + "</div> <span class='btAdd' data-id=" + board.id + ">+</span>";
+              '<div class="kanban-title-board">' + board.title + "</div> ";
             // if add button is true, add button to the board
             if (addButton) {
               var btn = document.createElement("button");
