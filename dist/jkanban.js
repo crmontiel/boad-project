@@ -295,16 +295,11 @@
               '<div class="kanban-title-board">' + board.title + "</div> <span class='btAdd' data-id=" + board.id + ">+</span>";
             // if add button is true, add button to the board
             if (addButton) {
-              var btn = document.createElement("BUTTON");
+              var btn = document.createElement("button");
               var t = document.createTextNode(buttonContent);
-              btn.setAttribute(
-                "class",
-                "kanban-title-button btn btn-default btn-xs"
-              );
-              btn.setAttribute(
-                "idboard",
-                board.id
-              );
+
+              btn.setAttribute("class", "kanban-title-button btn btn-default btn-xs");
+              // btn.setAttribute("id", board.id);
 
               btn.appendChild(t);
               //var buttonHtml = '<button class="kanban-title-button btn btn-default btn-xs">'+buttonContent+'</button>'
