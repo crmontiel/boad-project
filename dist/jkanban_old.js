@@ -313,68 +313,28 @@
             for (var itemkey in board.item) {
               //create item
               var itemKanban = board.item[itemkey];
-
-
-
-              // console.log(itemKanban)
-
-
-
               var nodeItem = document.createElement("div");
-
               nodeItem.classList.add("kanban-item");
-              if (String(itemKanban.description) != 'undefined') {
-                // nodeItem.setAttribute("data-title", itemKanban.description);
-
-              }
               if (itemKanban.id) {
                 nodeItem.dataset.eid = itemKanban.id;
               }
-              var txtprio = ""
-              if (String(itemKanban.priority) != 'undefined') {
-                txtprio = itemKanban.priority
-              }
-              // console.log(String(itemKanban.priority) == 'undefined' ? '' : itemKanban.priority )
-              nodeItem.innerHTML = "<span class='titlee'>" + itemKanban.title +
-                "</span> <span class='kanba-btitem'>" +
-                "<span class='txtidItem'>#" + itemKanban.id + "</span>" +
-                "<span class='txtxprioridad'>" + txtprio + "</span>" +
-                "<img class='imgitem' src='http://localhost/boad-project/dist/user.png'>" +
-
-                "</span>";
-
-              // console.log(nodeItem)
+              nodeItem.innerHTML = itemKanban.title;
               //add function
               nodeItem.clickfn = itemKanban.click;
               nodeItem.dragfn = itemKanban.drag;
               nodeItem.dragendfn = itemKanban.dragend;
               nodeItem.dropfn = itemKanban.drop;
-              // console.log(__appendCustomProperties(nodeItem, itemKanban))
               __appendCustomProperties(nodeItem, itemKanban);
               //add click handler of item
-              // console.log("###########")
-              // console.log(__onclickHandler(nodeItem))
               __onclickHandler(nodeItem);
-              // console.log("###########")
-
-              var nodeItemB = document.createElement("div");
-              nodeItemB.classList.add("kanba-btitem");
-              // console.log(nodeItemB)
-              // nodeItemB.appendChild(nodeItemB);
-
               contentBoard.appendChild(nodeItem);
             }
             //footer board
             var footerBoard = document.createElement("footer");
-            var botones = document.createElement("div");
-            botones.classList.add('btnF');
-            // var botones = document.createElement("div");
             //board assembly
             boardNode.appendChild(headerBoard);
             boardNode.appendChild(contentBoard);
-            footerBoard.appendChild(botones);
             boardNode.appendChild(footerBoard);
-            //boardNode.appendChild(footerBoard);
             //board add
             self.container.appendChild(boardNode);
           }
@@ -387,7 +347,6 @@
         };
 
         this.getParentBoardID = function(el) {
-
           if (typeof el === "string") {
             el = self.element.querySelector('[data-eid="' + el + '"]');
           }
@@ -398,7 +357,6 @@
         };
 
         this.moveElement = function(targetBoardID, elementID, element) {
-
           if (targetBoardID === this.getParentBoardID(elementID)) {
             return;
           }
@@ -408,7 +366,6 @@
         };
 
         this.replaceElement = function(el, element) {
-          console.log("+++++")
           var nodeItem = el;
           if (typeof nodeItem === "string") {
             nodeItem = self.element.querySelector('[data-eid="' + el + '"]');
@@ -429,7 +386,6 @@
         };
 
         this.getBoardElements = function(id) {
-
           var board = self.element.querySelector(
             '[data-id="' + id + '"] .kanban-drag'
           );
@@ -465,9 +421,7 @@
         };
 
         // board button on click function
-        this.onButtonClick = function(el) {
-          console.log("#--")
-        };
+        this.onButtonClick = function(el) {};
 
         //PRIVATE FUNCTION
         function __extendDefaults(source, properties) {
@@ -492,17 +446,15 @@
           self.element.appendChild(self.container);
         }
 
-        function __onclickHandler(nodeItem, clickfn) { //Click en un elemento--------------------------------------------------------
+        function __onclickHandler(nodeItem, clickfn) {
           nodeItem.addEventListener("click", function(e) {
-
             e.preventDefault();
             self.options.click(this);
             if (typeof this.clickfn === "function") this.clickfn(this);
           });
         }
 
-        function __onButtonClickHandler(nodeItem, boardId) { //Carga de elementos y board----------------------------------------------
-          // console.log("#--#")
+        function __onButtonClickHandler(nodeItem, boardId) {
           nodeItem.addEventListener("click", function(e) {
             e.preventDefault();
             self.options.buttonClick(this, boardId);
@@ -515,15 +467,13 @@
           var el = [];
           self.options.boards.map(function(board) {
             if (board.id === id) {
-
               return el.push(board);
             }
           });
           return el[0];
         }
 
-        function __appendCustomProperties(element, parentObject) { //Seteo de elementos y css ------------------------------------------------
-          // console.log("#--")
+        function __appendCustomProperties(element, parentObject) {
           for (var propertyName in parentObject) {
             if (self._disallowedItemProperties.indexOf(propertyName) > -1) {
               continue;
@@ -553,13 +503,11 @@
   }],
   2: [function(require, module, exports) {
     module.exports = function atoa(a, n) {
-      // console.log("#--")
       return Array.prototype.slice.call(a, n);
     }
 
 }, {}],
   3: [function(require, module, exports) {
-    // console.log("#--")
     'use strict';
 
     var ticky = require('ticky');
@@ -577,7 +525,6 @@
     "ticky": 11
   }],
   4: [function(require, module, exports) {
-    // console.log("#--")
     'use strict';
 
     var atoa = require('atoa');
