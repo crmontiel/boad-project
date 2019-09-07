@@ -25,17 +25,7 @@
   return r
 })()({
   1: [function(require, module, exports) {
-    /**
-     * jKanban
-     * Vanilla Javascript plugin for manage kanban boards
-     *
-     * @site: http://www.riccardotartaglia.it/jkanban/
-     * @author: Riccardo Tartaglia
-     */
-
-    //Require dragula
     var dragula = require("dragula");
-
     (function() {
       this.jKanban = function() {
         var self = this;
@@ -64,7 +54,7 @@
           responsivePercentage: false,
           boards: [],
           dragBoards: true,
-          dragItems: true, //whether can drag cards or not, useful when set permissions on it.
+          dragItems: true,
           addItemButton: false,
           buttonContent: "+",
           dragEl: function(el, source) {},
@@ -82,11 +72,11 @@
         }
 
         this.init = function() {
-          //set initial boards
+
           __setBoard();
-          //set drag with dragula
+
           if (window.innerWidth > self.options.responsive) {
-            //Init Drag Board
+
             self.drakeBoard = self
               .dragula([self.container], {
                 moves: function(el, source, handle, sibling) {
@@ -280,10 +270,13 @@
             if (board.class !== "" && board.class !== undefined)
               var allClasses = board.class.split(",");
             else allClasses = [];
+
             headerBoard.classList.add("kanban-board-header");
+
             allClasses.map(function(value) {
               headerBoard.classList.add(value);
             });
+
             headerBoard.innerHTML =
               '<div class="kanban-title-board">' + board.title + "</div>";
             // if add button is true, add button to the board
@@ -294,6 +287,7 @@
                 "class",
                 "kanban-title-button btn btn-default btn-xs"
               );
+
               btn.appendChild(t);
               //var buttonHtml = '<button class="kanban-title-button btn btn-default btn-xs">'+buttonContent+'</button>'
               headerBoard.appendChild(btn);
